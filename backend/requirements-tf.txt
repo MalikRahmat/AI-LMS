@@ -1,0 +1,2 @@
+# Optional: lightweight TensorFlow (CPU only). Python 3.9-3.11
+tensorflow-cpu==2.15.1

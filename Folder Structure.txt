@@ -1,0 +1,40 @@
+ai-learning-system/
+├── README.md
+├── Dockerfile                  (React build + Flask, ek container, Cloud Run ke liye)
+├── docker-compose.yml          (sirf local MySQL, optional)
+├── deploy-gcp.sh               (Cloud SQL + Cloud Storage + Cloud Run deploy)
+├── database/
+│   └── schema.sql              (database aur user banata hai)
+├── backend/
+│   ├── run.py
+│   ├── requirements.txt
+│   ├── requirements-tf.txt     (optional tensorflow-cpu)
+│   ├── .env.example
+│   └── app/
+│       ├── __init__.py         (app factory, React serve karta hai)
+│       ├── config.py
+│       ├── extensions.py
+│       ├── models.py           (users, topics, questions, answer_logs, resources, chat)
+│       ├── utils.py            (role_required)
+│       ├── cli.py              (seed, train-model, create-admin)
+│       ├── seed.py             (demo data)
+│       ├── routes/
+│       │   ├── auth.py  student.py  quiz.py  chatbot.py
+│       │   ├── teacher.py  admin.py  content.py
+│       │   └── resources.py  integrations.py
+│       ├── ml/
+│       │   ├── predictor.py    (scikit-learn weakness model)
+│       │   ├── tf_model.py     (optional TensorFlow CPU)
+│       │   ├── analytics.py
+│       │   └── chatbot_engine.py (NLP fallback, bina API key)
+│       └── services/
+│           ├── llm.py  quiz.py  recommender.py
+│           ├── storage.py      (local ya Google Cloud Storage)
+│           └── integrations.py (Moodle, Coursera)
+└── frontend/
+    ├── package.json  vite.config.js  index.html
+    └── src/
+        ├── main.jsx  App.jsx  api.js  auth.jsx  styles.css
+        └── pages/
+            Login  StudentDashboard  Quiz  Chat  Resources
+            Integrations  TeacherDashboard  AdminPanel

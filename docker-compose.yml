@@ -1,0 +1,13 @@
+# Local MySQL only (optional). Run: docker compose up -d
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: ai_learning
+      MYSQL_USER: ailearn
+      MYSQL_PASSWORD: ailearn123
+    ports: ["3306:3306"]
+    volumes: [mysqldata:/var/lib/mysql]
+volumes:
+  mysqldata:
